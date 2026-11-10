@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>SkipyyyVPN Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #020c1b; 
+            background-image: radial-gradient(circle at center, #0a192f 0%, #020c1b 100%);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Плавно плывущие частицы на фоне */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(#64ffda 2px, transparent 2px),
+                radial-gradient(#4facfe 2px, transparent 2px);
+            background-size: 120px 120px, 180px 180px;
+            background-position: 0 0, 50px 50px;
+            animation: moveParticles 15s linear infinite;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        @keyframes moveParticles {
+            0% { background-position: 0 0, 50px 50px; }
+            100% { background-position: 120px 120px, 170px 170px; }
+        }
+
+        /* Контейнер для баннера */
+        .banner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 1500px;
+            max-width: 95%;
+            padding: 50px 80px;
+            background: rgba(10, 25, 47, 0.8);
+            border: 2px solid rgba(100, 255, 218, 0.3);
+            border-radius: 30px;
+            box-shadow: 0 0 60px rgba(100, 255, 218, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Левая часть с текстом */
+        .text-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .title {
+            font-size: 80px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 15px #4facfe, 0 0 30px #4facfe;
+            opacity: 0;
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        .title span {
+            color: #64ffda;
+            text-shadow: 0 0 20px #64ffda, 0 0 40px #64ffda;
+        }
+
+        .subtitle {
+            font-size: 110px;
+            font-weight: 900;
+            color: #64ffda;
+            text-shadow: 0 0 30px #64ffda, 0 0 60px #64ffda;
+            margin-top: 10px;
+            opacity: 0;
+            animation: scaleIn 1s ease-out 0.5s forwards;
+        }
+
+        .cta-text {
+            font-size: 36px;
+            color: #8892b0;
+            margin-top: 30px;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        /* Правая часть с QR-кодом и ником */
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 1.5s forwards;
+        }
+
+        .qr-container {
+            width: 380px;
+            height: 380px;
+            background: transparent;
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .qr-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(79, 172, 254, 0.6));
+        }
+
+        /* Текст с ником под QR-кодом */
+        .telegram-nick {
+            font-size: 38px;
+            font-weight: 900;
+            color: #64ffda;
+            text-shadow: 0 0 15px #64ffda, 0 0 30px #64ffda;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            animation: pulseText 2s infinite ease-in-out;
+        }
+
+        /* Анимации */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.4)); }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 35px rgba(100, 255, 218, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.4)); }
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.7; text-shadow: 0 0 10px #64ffda; }
+            50% { opacity: 1; text-shadow: 0 0 25px #64ffda, 0 0 40px #64ffda; }
+            100% { opacity: 0.7; text-shadow: 0 0 10px #64ffda; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles"></div>
+
+    <div class="banner">
+        <div class="text-section">
+            <div class="title">VPN ЗА <span>30 ₽</span></div>
+            <div class="subtitle">НАВСЕГДА</div>
+            <div class="cta-text">Безлимит. Без подписок.</div>
+        </div>
+
+        <div class="qr-section">
+            <div class="qr-container">
+                <!-- Твоя картинка с QR-кодом -->
+                <img src="qr.png" alt="QR Code">
+            </div>
+            <!-- Добавленный ник -->
+            <div class="telegram-nick">@skipyyyvpn</div>
+        </div>
+    </div>
+
+</body>
+</html>
